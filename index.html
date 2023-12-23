@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resume Builder</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/script.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body class="light-grey">
+        <div class="nav">
+            <button id="cmd" onclick="printpdf()" class="navbtn"><i class="fas fa-download"></i></button>
+            <form>
+            <input type="hidden" id="custinfo" name="custinfo">
+            <button class="navbtn"><i class="fas fa-save"></i></button>
+            </form>
+            <button class="navbtn" href="index.html"><i class="fas fa-home"></i></button>
+        </div>
+        <div class="resume" id="resume">
+            <section id="print">
+                <div class="row">
+                    <div class="col-lg-3 first-half">
+                        <div class="profile">
+                            <div class="profile-pic">
+                                <label class="-label" for="file">
+                                  <span><i class="fas fa-camera"></i></span>
+                                  <span>Change Image</span>
+                                </label>
+                                <input id="file" type="file" onchange="loadFile(event)"/>
+                                <img src="images/profile.jpg" id="output" width="150" />
+                            </div>
+                            <div class="personal-details">
+                                <span class="name" contenteditable="true">YOUR</span> <span contenteditable="true">NAME</span>
+                                <div class="post" contenteditable="true">YOUR JOB PROFILE</div>
+                            </div>
+                            <div class="container">
+                                <div class="contacts">
+                                    <span class="symbol"> <i class="fas fa-phone"></i></span><span contenteditable="true" class="content">231-3212-2132</span><br>
+                                    <span class="symbol"> <i class="fas fa-envelope"></i></span><span contenteditable="true" class="content">samplemail@gmail.com</span><br>
+                                    <span class="symbol"> <i class="fab fa-linkedin"></i></span><span contenteditable="true" class="content">linkedin/username.com</span><br>
+                                    <span class="symbol"> <i class="fas fa-map-marker-alt"></i></i></span><span contenteditable="true" class="content">sample street-India</span>
+                                </div>
+                            </div>
+                            <br>
+                            <hr>
+                            <div class="container details">
+                                <span class="title">MY SKILLS</span>
+                                <br><br>
+                                <div>
+                                    <div class="skill">
+                                        <span><input type="checkbox" class="input-checkbox"></span>
+                                        <span><i class="fas fa-chevron-circle-right"></i></span>   
+                                        <span contenteditable="true">write your skill here</span>
+                                    </div>
+                                    <div id="skills"></div>
+                                    <button id="skilladd" type="button" class="btn btn-success" onclick="addskill()"><i class="fas fa-plus-circle"></i> Skill</button>
+                                    <button id="skillrem" type="button" class="btn btn-danger" onclick="remskill(event)"><i class="fas fa-minus-circle"></i> Skill</button>
+                                </div>
+                                <br>
+                                <br>
+                                <span class="title">LANGUAGES</span>
+                                <br>
+                                <br>
+                                <div>
+                                    <div class="language">
+                                        <span><input type="checkbox" class="input-checkbox"></span>
+                                        <span contenteditable="true">LANGNAME</span> - 
+                                        <span contenteditable="true">level u know</span></div>
+                                    <div id="languages"></div>
+                                    <button id="langadd" type="button" class="btn btn-success" onclick="addLang()"><i class="fas fa-plus-circle"></i> Language</button>
+                    
+                                    <button id="langrem" type="button" class="btn btn-danger" onclick="remLang(event)"><i class="fas fa-minus-circle"></i> Language</button>
+                                </div>
+                                <br>
+                                <br>
+                                <span class="title">INTERESTS</span>
+                                <br>
+                                <br>
+                                <div>
+                                    <div id="interest"></div>
+                                    <button id="Intadd" type="button" class="btn btn-success" onclick="addInt()"><i class="fas fa-plus-circle"></i> Interest</button>
+                        
+                                    <button id="Intrem" type="button" class="btn btn-danger" onclick="remInt(event)"><i class="fas fa-minus-circle"></i> Interest</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 second-half">
+                        <div class="content">
+                            <span class="title">ABOUT ME</span><br><br>
+                            <div contenteditable="true">
+                            Here u can write the basic information about your career like your forte, something about yourself that
+                            you want your interviewer to know. Try to keep it brief and only provide necessary information. Do not include information which is
+                            already written in your resume in some other section.</div>
+                            <br><br><span class="title">EDUCATION</span><br><br><div>
+                            <div id="education">
+                                <div class="edublock">
+                                    <span><input type="checkbox" class="input-checkbox"></span>
+                                    <span class="education-head" contenteditable="true">YOUR DEGREE</span>
+                                    <div ><span contenteditable="true">Institute name</span> - <span contenteditable="true">Passing Year</span></div>
+                                </div>
+                            </div>
+        
+                            <button id="eduadd" type="button" class="btn btn-success" onclick="addedu()"><i class="fas fa-plus-circle"></i> Education</button>
+        
+                            <button id="edurem" type="button" class="btn btn-danger" onclick="remedu(event)"><i class="fas fa-minus-circle"></i> Education</button></div>
+        
+                            <br><br><span class="title">EXPERIANCE</span><br><br><div>
+                                <div id="experiance">
+                                    <div class="exblock">
+                                        <span><input type="checkbox" class="input-checkbox"></span>
+                                        <span class="experiance-head" contenteditable="true">WORK EXPERIANCE</span>
+                                        <div ><span contenteditable="true">Company name</span> - <span contenteditable="true">From - To</span></div>
+                                    </div>
+                                </div>
+            
+                                <button id="exadd" type="button" class="btn btn-success" onclick="addex()"><i class="fas fa-plus-circle"></i> Experiance</button>
+            
+                                <button id="exrem" type="button" class="btn btn-danger" onclick="remex(event)"><i class="fas fa-minus-circle"></i> Experiance</button></div>
+        
+                            <br><br>
+                            <div class="new-section-div"><div><span><input type="checkbox" class="input-checkbox"></span><span class="title" contenteditable="true">NEW SECTION</span><br><br>
+                            <div contenteditable="true">
+                            This is the description part of your new section. Try to stay within limit and write something which has less
+                            than 400 characters. The spaces and symbols you use will also be included so use them for an indentation effect.</div>
+                            </div>
+        
+                            <div id="newsec"></div>
+                            <button id="secadd" type="button" class="btn btn-success" onclick="addsec()"><i class="fas fa-plus-circle"></i> Section</button>
+        
+                            <button id="secrem" type="button" class="btn btn-danger" onclick="remsec(event)"><i class="fas fa-minus-circle"></i> Section</button>
+                        </div>
+                        </div>
+        
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+        </div>
+        
+    </body>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
+
+
+</html>
